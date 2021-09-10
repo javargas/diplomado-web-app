@@ -1,14 +1,14 @@
-from supermarket_ms.models.category_model import Category
-from supermarket_ms.serializers.category_serializer import CategorySerializer
+from sales_ms.models.sales_model import Sales
+from sales_ms.serializers.sales_serializer import SalesSerializer
 from rest_framework import mixins
 from rest_framework import generics
 
-class CategoryList(mixins.ListModelMixin,
-                   mixins.CreateModelMixin,
-                   generics.GenericAPIView):
+class SalesList(mixins.ListModelMixin,
+                mixins.CreateModelMixin,
+                generics.GenericAPIView):
 
-    queryset = Category.objects.all()
-    serializer_class = CategorySerializer
+    queryset = Sales.objects.all()
+    serializer_class = SalesSerializer
 
     def get(self, request, *args, **kwargs):
         return self.list(request, *args, **kwargs)
@@ -16,19 +16,3 @@ class CategoryList(mixins.ListModelMixin,
     def post(self, request, *args, **kwargs):
         return self.create(request, *args, **kwargs)
 
-class CategoryDetail(mixins.RetrieveModelMixin,
-                     mixins.UpdateModelMixin,
-                     mixins.DestroyModelMixin,
-                     generics.GenericAPIView):
-                     
-    queryset = Category.objects.all()
-    serializer_class = CategorySerializer
-
-    def get(self, request, *args, **kwargs):
-        return self.retrieve(request, *args, **kwargs)
-
-    def put(self, request, *args, **kwargs):
-        return self.update(request, *args, **kwargs)
-
-    def delete(self, request, *args, **kwargs):
-        return self.destroy(request, *args, **kwargs)

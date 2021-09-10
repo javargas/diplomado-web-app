@@ -1,4 +1,4 @@
 from django.apps import AppConfig
 
-class SupermarketMSConfig(AppConfig):
+class SalesMSConfig(AppConfig):
     name = 'sales_ms'
